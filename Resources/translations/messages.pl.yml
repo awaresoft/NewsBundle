@@ -1,0 +1,115 @@
+news.admin.unique_name.constraint: Tytuł istnieje, podaj inny
+
+title_archive: Archiwum
+title_comments: Komentarze
+btn_add_comment: Dodaj komentarz
+message_comments_are_closed: Komentarzze są wyłączone dla tej aktualności.
+no_post_found: Nie znaleziono aktualności.
+sidemenu:
+    link_view_post: Wyświetl
+    link_view_comments: Komentarze
+    link_edit_post: Edycja
+breadcrumb:
+    link_comment_create: Stwórz
+    link_comment_list: Komentarze
+    link_comment_edit: Edycja
+    link_post_create: Stwórz
+    link_post_list: Aktualności
+    link_post_edit: Edycja
+    link_tag_create: Stwórz
+    link_tag_list: Tagi
+    link_tag_edit: Edycja
+    link_collection_list: Kategorie
+comments: Komentarze
+posts: Aktualności
+categories: Kategorie
+tags: Tagi
+no_tag_selected: Nie wybrano tagów
+published_under: "{0} Nie wybrano | tag {1} Tag: | [1, Inf] Tagi:"
+archive_author: "przez autora%%"
+comments_count: "%comments_count% komentarze"
+title_leave_comment: Dodaj komentarz
+no_comments_available: Brak komentarzy
+sonata_blog: Blog
+list:
+    label_title: Tytuł
+    label_author: Autor
+    label_collection: Collection
+    label_enabled: Włączone
+    label_tags: Tagi
+    label_comments_enabled: Komentarze włączony
+    label_comments_count: Ilość komentarz
+    label_publication_date_start: data rozpoczęcia publikacji
+    label_name: Nazwa
+    label_post: post
+    label_email: E-mail
+    label_url: URL
+    label_message: Komunikat
+    label_slug: Slug
+    label_description: Opis
+    label__action: Akcja
+    label_site: Strona
+form:
+    label_enabled: Włączone
+    label_author: Autor
+    label_collection: Kolekcja
+    label_title: Tytuł
+    label_abstract: Wstęp
+    label_content: Treść
+    label_tags: Tagi
+    label_publication_date_start: data rozpoczęcia publikacji
+    label_comments_close_at: Komentarze zamknięte
+    label_comments_enabled: Komentarze włączone
+    label_comments_default_status: Komentarze domyślny status
+    label_post: post
+    label_name: Nazwa
+    label_email: E-mail
+    label_url: URL
+    label_message: Komunikat
+    label_status: Stan
+    label_description: Opis
+    comment:
+        name: Nazwa
+        email: E-mail
+        url: URL
+        message: Komunikat
+    label_gallery: Galeria
+    label_banner: Banner
+    label_image: Obrazek
+    label_abstract2: Krótki opis
+    label_position: Stanowisko
+    label_file: Plik
+    label_site: Strona
+filter:
+    label_title: Tytuł
+    label_enabled: Włączone
+    label_tags: Tagi
+    label_author: Autor
+    label_with_open_comments: Otwarte komentarze
+    label_post: ID postu
+    label_content: Zawartość
+    label_name: Nazwa
+    label_email: E-mail
+    label_message: Komunikat
+    label_posts: Słupy
+    label_site: Site
+status_code: Kod stanu
+batch:
+    comment_enable: Włącz
+    comment_disable: Wyłącz
+link_previous_page: Poprzednia strona
+link_next_page: Następna strona
+view_all_posts: Zobacz wszystkie aktualności
+post_is_public: Publiczny
+post_is_not_public: Prywatny
+label_comment_valid: Prawidłowy
+label_comment_invalid: Nieprawidłowy
+label_unknown_status: Nieznany
+label_unknown_moderate: Moderowany
+view_all_comments: Zobacz wszystkie komentarze
+sonata_news_archive_breadcrumb: Aktualności
+group_general: Ogólne
+group_comment: Komentarz
+news: Aktualności
+form.label_meta_title: Tytuł
+form.label_meta_description: Opis

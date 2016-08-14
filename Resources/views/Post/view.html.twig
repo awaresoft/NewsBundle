@@ -1,0 +1,114 @@
+{% import 'ApplicationMainBundle:Macro:macro_files.html.twig' as macro_files %}
+
+<section id="news">
+    <article>
+        <header>
+            <div>
+                <a href="{{ path('sonata_news_home') }}" class="glyphicon glyphicon-share-alt" title="{{ 'back_to_list' |trans }}"></a>
+            </div>
+            <h1>
+                {{ post.title }}
+            </h1>
+            <div>
+                <span>{{ 'news.post.published' |trans }}: <time>{{ post.publicationDateStart | format_date }}</time></span>
+                <span>{{ 'visits' |trans }}: {{ post.visits }}</span>
+            </div>
+            <div class="clearfix"></div>
+        </header>
+
+        <div id="news-content">
+            {%- if post.image is not empty %}
+                <img class="main img-responsive" src="{% path post.image, 'normal' %}" alt="{{ post.title }}" %} />
+            {%- endif %}
+
+            {{ post.content|raw }}
+            <div class="clearfix"></div>
+        </div>
+
+        {% if post.gallery is not empty %}
+            <section id="news-gallery">
+                <header>
+                    <h3>{{ 'news.post.gallery' |trans }}</h3>
+                </header>
+                <div>
+                    {% for element in post.gallery.galleryHasMedias %}
+                        <div>
+                            <a rel="gallery" href="{% path element.media, 'big' %}">
+                                <img src="{% path element.media, 'small' %}"/>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+
+        {% if files is defined and files | length > 0 %}
+            <section>
+                <header>
+                    <h3>{{ 'news.post.files' |trans }}</h3>
+                </header>
+                <div>
+                    <ul>
+                        {% for file in files %}
+                            {% if file.file is defined %}
+                                <li>
+                                    {{ macro_files.downloadFile(file.file) }}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        {% endif %}
+
+        <div id="news-controls">
+            <div>
+                {% if nextPost %}
+                    <a class="btn btn-primary"
+                       href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(nextPost) }) }}">
+                        {{ 'news.post.next_post' |trans }}
+                        <span class="glyphicon glyphicon-menu-right"></span>
+                    </a>
+                {% endif %}
+            </div>
+            <div>
+                {% if prevPost %}
+                    <a class="btn btn-primary"
+                       href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(prevPost) }) }}">
+                        <span class="glyphicon glyphicon-menu-left"></span>
+                        {{ 'news.post.prev_post' |trans }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </article>
+</section>
+
+{% block javascript_lazy %}
+    <script>
+        $('#news-gallery').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+            gallery: {
+                enabled: true,
+                preload: [0,2]
+            },
+            mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+            zoom: {
+                enabled: true, // By default it's false, so don't forget to enable it
+                duration: 300, // duration of the effect, in milliseconds
+                easing: 'ease-in-out', // CSS transition easing function
+                // The "opener" function should return the element from which popup will be zoomed in
+                // and to which popup will be scaled down
+                // By defailt it looks for an image tag:
+                opener: function(openerElement) {
+                    // openerElement is the element on which popup was initialized, in this case its <a> tag
+                    // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+                    return openerElement.is('img') ? openerElement : openerElement.find('img');
+                }
+            }
+        });
+    </script>
+{% endblock %}
+
+

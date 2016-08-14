@@ -1,0 +1,11 @@
+{
+    "name": "awaresoft/SonataNewsBundle",
+    "type": "symfony-bundle",
+    "description": "Symfony Awaresoft SonataNewsBundle",
+    "require": {
+        "php": ">= 7",
+        "symfony/symfony": "2.*"
+    },"autoload": {
+    "psr-4": { "Awaresoft\\SonataNewsBundle\\": "" }
+}
+}

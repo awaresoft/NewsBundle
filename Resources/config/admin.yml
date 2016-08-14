@@ -1,0 +1,24 @@
+services:
+    sonata.news.admin.post:
+        class: Awaresoft\Sonata\NewsBundle\Admin\PostAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: sonata_blog, label: news, label_catalogue: "%sonata.news.admin.post.translation_domain%", label_translator_strategy: "sonata.admin.label.strategy.underscore" }
+        arguments:
+            - null
+            - "%sonata.news.admin.post.entity%"
+            - AwaresoftSonataNewsBundle:PostCRUD
+        calls:
+            - [ setUserManager, ["@fos_user.user_manager"]]
+            - [ setPoolFormatter, ["@sonata.formatter.pool"]]
+            - [ addChild, ["@sonata.news.admin.comment"]]
+            - [ setPermalinkGenerator, ["@sonata.news.permalink.generator"]]
+            - [ setContainer, ["@service_container"]]
+
+    sonata.news.admin.post.files:
+        class: Awaresoft\Sonata\NewsBundle\Admin\PostHasFilesAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: sonata_blog, label: news, label_catalogue: "%sonata.news.admin.post.translation_domain%", label_translator_strategy: "sonata.admin.label.strategy.underscore" }
+        arguments:
+            - null
+            - Awaresoft\Sonata\NewsBundle\Entity\PostHasFiles
+            - null

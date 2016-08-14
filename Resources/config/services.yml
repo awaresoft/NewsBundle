@@ -1,0 +1,6 @@
+services:
+    sonata.news.manager.post:
+        class: Awaresoft\Sonata\NewsBundle\Entity\PostManager
+        arguments:
+            - %sonata.news.manager.post.entity%
+            - @doctrine

@@ -1,0 +1,24 @@
+<div class="box box50" id="boxNews">
+    <h2 class="title"><a   title="{{ 'go_to_page' | trans }} {{ settings.title }}" href="{{ path('sonata_news_home') }}">{{ settings.title }}</a></h2>
+
+    <div id="newsRotator" >
+        <ul class="content {%- if (pager.getResults() | length > 1 ) %} slider{% endif %}">
+        {% for post in pager.getResults() %}
+        <li>
+            <img src="{% path post.image, 'normal' %}" alt="" />
+            <div class="text">
+                <h3><a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a></h3>
+                <time>{{ post.publicationDateStart | format_date }}</time>
+                <p>{{ post.abstract }}</p>
+                <a title="{{ 'go_to_page' | trans }} {{ post.title }}" href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}" class="readMore">{{ 'Read_more'|trans}}</a>
+            </div>
+        </li>
+        {% endfor %}
+        </ul>
+        {% if (pager.getResults() | length > 1 ) %}
+            <div class="rButtons">
+                {% for post in pager.getResults() %}<span></span>{% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,39 @@
+{% for post in pager.getResults() if post |length > 0 %}
+    <div>
+        <article>
+            <div>
+                <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">
+                    <img src="{% path post.image, 'wide' %}" alt="{{ post.title }}"/>
+                </a>
+                <header>
+                    <h2>
+                        <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a>
+                    </h2>
+                    <time>{{ post.publicationDateStart |format_date }}</time>
+                </header>
+
+                <p>
+                    {{ post.abstract |slice (0, 200) }}
+                </p>
+                <div>
+                    <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}"
+                       class="btn btn-primary"
+                       title="{{ 'go_to_page' |trans }} {{ post.title }}"
+                    >{{ 'read_more' |trans }}
+                    </a>
+                </div>
+            </div>
+        </article>
+    </div>
+    {% if loop.index % 3 == 0 %}
+        <div class="clearfix visible-lg"></div>
+    {% endif %}
+
+    {% if loop.index % 2 == 0 %}
+        <div class="clearfix visible-sm visible-md"></div>
+    {% endif %}
+{% else %}
+    <div>
+        {{ 'news.list.posts_not_found'|trans }}
+    </div>
+{% endfor %}

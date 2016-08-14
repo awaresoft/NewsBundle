@@ -1,0 +1,116 @@
+news.admin.unique_name.constraint: Title exists, please add other title
+
+title_archive: Archive
+title_comments: Comments
+btn_add_comment: Add comment
+message_comments_are_closed: The comment form is closed for this current news.
+no_post_found: No post found.
+sidemenu:
+    link_view_post: View
+    link_view_comments: Comments
+    link_edit_post: Edit
+breadcrumb:
+    link_comment_create: Create
+    link_comment_list: Comments
+    link_comment_edit: Edit
+    link_post_create: Create
+    link_post_list: Posts
+    link_post_edit: Edit
+    link_tag_create: Create
+    link_tag_list: Tags
+    link_tag_edit: Edit
+    link_collection_list: Categories
+comments: Comments
+posts: Posts
+categories: Categories
+tags: Tags
+no_tag_selected: No tag selected
+published_under: "{0}No tag selected|{1}Tag: |[1,Inf]Tags:"
+archive_author: "by %author%"
+comments_count: "%comments_count% comments"
+title_leave_comment: Add a comment
+mail_title_comment_notification: "New comment for post '%post_title%' on blog '%blog_title%'\nNew comment for post \"%post_title%\" on blog \"%blog_title%\"\n\nPost: %post_title% - %post_url%\nFrom: %comment_name%\nEmail: %comment_email%\nUrl: %comment_url%\nMessage:\n%comment_message%\n\nQuick moderation links :\n  - validate: %comment_valid_link%\n  - invalidate: %comment_invalid_link%\n                "
+no_comments_available: No comments available
+sonata_blog: Blog
+list:
+    label_title: Title
+    label_author: Author
+    label_collection: Collection
+    label_enabled: Enabled
+    label_tags: Tags
+    label_comments_enabled: Comments enabled
+    label_comments_count: Comment count
+    label_publication_date_start: Publication start date
+    label_name: Name
+    label_post: Post
+    label_email: E-mail
+    label_url: Url
+    label_message: Message
+    label_slug: Slug
+    label_description: Description
+    label__action: Action
+    label_site: Site
+form:
+    label_enabled: Enabled
+    label_author: Author
+    label_collection: Collection
+    label_title: Title
+    label_abstract: Abstract
+    label_content: Content
+    label_tags: Tags
+    label_publication_date_start: Publication start date
+    label_comments_close_at: Comments closed at
+    label_comments_enabled: Comments enabled
+    label_comments_default_status: Comment default status
+    label_post: Post
+    label_name: Name
+    label_email: E-mail
+    label_url: Url
+    label_message: Message
+    label_status: Status
+    label_description: Description
+    comment:
+        name: Name
+        email: Email
+        url: Url
+        message: Message
+    label_gallery: Gallery
+    label_banner: Banner
+    label_image: Image
+    label_abstract2: Short description
+    label_position: Position
+    label_file: File
+    label_site: Site
+filter:
+    label_title: Title
+    label_enabled: Enabled
+    label_tags: Tags
+    label_author: Author
+    label_with_open_comments: Open comments
+    label_post: Post ID
+    label_content: Content
+    label_name: Name
+    label_email: E-mail
+    label_message: Message
+    label_posts: Posts
+    label_site: Site
+status_code: Status code
+batch:
+    comment_enable: Enable
+    comment_disable: Disable
+link_previous_page: Previous page
+link_next_page: Next page
+view_all_posts: View all posts
+post_is_public: Public
+post_is_not_public: Private
+label_comment_valid: Valid
+label_comment_invalid: Invalid
+label_unknown_status: Unknown
+label_unknown_moderate: Moderate
+view_all_comments: View all comments
+sonata_news_archive_breadcrumb: Aktualności
+group_general: General
+group_comment: Comment
+news: News
+form.label_meta_title: Title
+form.label_meta_description: Description

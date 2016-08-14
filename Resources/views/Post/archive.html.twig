@@ -1,0 +1,22 @@
+<section id="news-list" data-limit="{{ pager.getMaxPerpage }}" data-count="{{ pager.count }}">
+    <div>
+        <div>
+            <h1>{{ 'news.list.title' |trans }}</h1>
+        </div>
+    </div>
+
+    <div id="news-list-container">
+        {% include 'AwaresoftSonataNewsBundle:Post:Helper/posts.html.twig' %}
+    </div>
+
+    <div id="news-list-more">
+        <a rel="next" class="btn btn-lg btn-primary">
+            {{ 'show_more' |trans }}
+            <span class="glyphicon glyphicon-menu-down"></span>
+        </a>
+    </div>
+</section>
+
+<script>
+    var NEWS_LIST_URL = '{{ path('sonata_news_home') }}';
+</script>
