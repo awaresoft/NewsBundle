@@ -1,5 +1,5 @@
 {
-    "name": "awaresoft/SonataNewsBundle",
+    "name": "awaresoft/sonata-news-bundle",
     "type": "symfony-bundle",
     "description": "Symfony Awaresoft SonataNewsBundle",
     "require": {
