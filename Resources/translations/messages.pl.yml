@@ -3,8 +3,8 @@ news.admin.unique_name.constraint: Tytuł istnieje, podaj inny
 title_archive: Archiwum
 title_comments: Komentarze
 btn_add_comment: Dodaj komentarz
-message_comments_are_closed: Komentarzze są wyłączone dla tej aktualności.
-no_post_found: Nie znaleziono aktualności.
+message_comments_are_closed: Komentarzze są wyłączone dla tego artykułu.
+no_post_found: Nie znaleziono artykułu.
 sidemenu:
     link_view_post: Wyświetl
     link_view_comments: Komentarze
@@ -14,14 +14,14 @@ breadcrumb:
     link_comment_list: Komentarze
     link_comment_edit: Edycja
     link_post_create: Stwórz
-    link_post_list: Aktualności
+    link_post_list: Artykuły
     link_post_edit: Edycja
     link_tag_create: Stwórz
     link_tag_list: Tagi
     link_tag_edit: Edycja
     link_collection_list: Kategorie
 comments: Komentarze
-posts: Aktualności
+posts: Artykuły
 categories: Kategorie
 tags: Tagi
 no_tag_selected: Nie wybrano tagów
@@ -99,7 +99,7 @@ batch:
     comment_disable: Wyłącz
 link_previous_page: Poprzednia strona
 link_next_page: Następna strona
-view_all_posts: Zobacz wszystkie aktualności
+view_all_posts: Zobacz wszystkie artykuły
 post_is_public: Publiczny
 post_is_not_public: Prywatny
 label_comment_valid: Prawidłowy
@@ -107,9 +107,9 @@ label_comment_invalid: Nieprawidłowy
 label_unknown_status: Nieznany
 label_unknown_moderate: Moderowany
 view_all_comments: Zobacz wszystkie komentarze
-sonata_news_archive_breadcrumb: Aktualności
+sonata_news_archive_breadcrumb: Artykuły
 group_general: Ogólne
 group_comment: Komentarz
-news: Aktualności
+news: Artykuły
 form.label_meta_title: Tytuł
 form.label_meta_description: Opis

@@ -45,7 +45,7 @@ class PostController extends BasePostController
         $limit = self::DEFAULT_LIST_LIMIT;
         $limitFromSetting = $this->get('awaresoft.setting')->getField('NEWS', 'LIST_LIMIT');
         $site = $this->get('sonata.page.site.selector')->retrieve();
-        
+
         if ($limitFromSetting && $limitFromSetting->getValue() > 0) {
             $limit = $limitFromSetting->getValue();
         }
@@ -64,7 +64,7 @@ class PostController extends BasePostController
             'pager' => $pager,
             'blog' => $this->get('sonata.news.blog'),
             'tag' => false,
-            'collection' => false,
+            'collection' => isset($criteria['collection']) ? $criteria['collection'] : false,
             'route' => $request->get('_route'),
             'route_parameters' => $request->get('_route_params'),
         ], $parameters);

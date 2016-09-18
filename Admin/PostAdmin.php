@@ -5,6 +5,7 @@ namespace Awaresoft\Sonata\NewsBundle\Admin;
 use Awaresoft\Sonata\AdminBundle\Admin\AbstractAdmin as AwaresoftAbstractAdmin;
 use Gedmo\Sluggable\Util\Urlizer;
 use Sonata\AdminBundle\Admin\AdminInterface;
+use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\CoreBundle\Validator\ErrorElement;
@@ -13,6 +14,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\FormatterBundle\Formatter\Pool as FormatterPool;
 use Knp\Menu\ItemInterface as MenuItemInterface;
+use Sonata\UserBundle\Model\UserManagerInterface;
 
 /**
  * Class PostAdmin rewrite functionallity from Sonata PostAdmin
@@ -148,9 +150,10 @@ class PostAdmin extends AwaresoftAbstractAdmin
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $this->prepareFilterMultisite($datagridMapper);
-
-        $datagridMapper->add('title')
+        $datagridMapper
+            ->add('site')
+            ->add('collection')
+            ->add('title')
             ->add('content')
             ->add('enabled');
     }
@@ -163,6 +166,7 @@ class PostAdmin extends AwaresoftAbstractAdmin
         $imageRequired = false;
 
         $formMapper->with($this->trans('admin.admin.form.group.main'), ['class' => 'col-md-8'])->end()
+            ->with($this->trans('admin.admin.form.group.classification'), ['class' => 'col-md-8'])->end()
             ->with($this->trans('admin.admin.form.group.seo'), ['class' => 'col-xs-12 col-md-4 pull-right'])->end()
             ->with($this->trans('admin.admin.form.group.status'), ['class' => 'col-md-4'])->end()
             ->with($this->trans('admin.admin.form.group.media') . ' #1', ['class' => 'col-xs-12 col-md-4 pull-right'])->end()
@@ -240,16 +244,16 @@ class PostAdmin extends AwaresoftAbstractAdmin
             ])
             ->end();
 
-//        $formMapper
-//            ->with('Classification', array(
-//                'class' => 'col-md-4'
-//            ))
+        $formMapper
+            ->with($this->trans('admin.admin.form.group.classification'), array(
+                'class' => 'col-md-4'
+            ))
 //            ->add('tags', 'sonata_type_model_autocomplete', array(
 //                'property' => 'name',
 //                'multiple' => 'true'
 //            ))
-//            ->add('collection', 'sonata_type_model_list', array('required' => false))
-//            ->end()
+            ->add('collection', 'sonata_type_model_list', array('required' => false))
+            ->end();
 
         $formMapper->setHelps([
             'tags' => $this->trans('admin.admin.help.tags'),
@@ -270,12 +274,6 @@ class PostAdmin extends AwaresoftAbstractAdmin
 
         $admin = $this->isChild() ? $this->getParent() : $this;
         $id = $admin->getRequest()->get('id');
-//        $menu->addChild($this->trans('sidemenu.link_edit_post'), ['uri' => $admin->generateUrl('edit', ['id' => $id])]);
-
-//        $menu->addChild(
-//            $this->trans('sidemenu.link_view_comments'),
-//            array('uri' => $admin->generateUrl('sonata.news.admin.comment.list', array('id' => $id)))
-//        );
 
         if ($this->hasSubject() && $this->getSubject()->getId() !== null) {
             $menu->addChild($this->trans('sidemenu.link_view_post'), [
