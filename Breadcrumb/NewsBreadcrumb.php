@@ -16,7 +16,7 @@ class NewsBreadcrumb extends AbstractBreadcrumb
      */
     public function create()
     {
-        $parentPage = $this->getPageRepository()->findOneByRouteName('sonata_news_home');
+        $parentPage = $this->getPageRepository()->findOneBySiteAndRoute($this->site, 'sonata_news_home');
 
         $parentBreadcrumb = new PageBreadcrumb($this->container);
         $parentBreadcrumb->setPage($parentPage);
@@ -30,8 +30,14 @@ class NewsBreadcrumb extends AbstractBreadcrumb
         }
 
         $item = new BreadcrumbItem();
+        $item->setName($post->getCollection()->getName());
+        $item->setUrl($this->router->generate('sonata_news_collection', ['collection' => $post->getCollection()->getSlug()]));
+        $item->setActive(false);
+        $breadcrumbs[] = $item;
+
+        $item = new BreadcrumbItem();
         $item->setName($post->getTitle());
-        $item->setUrl($this->router->generate('sonata_news_view', array('permalink' => $permalink)));
+        $item->setUrl($this->router->generate('sonata_news_view', ['permalink' => $permalink]));
         $item->setActive(true);
         $breadcrumbs[] = $item;
 
