@@ -29,11 +29,13 @@ class NewsBreadcrumb extends AbstractBreadcrumb
             return $breadcrumbs;
         }
 
-        $item = new BreadcrumbItem();
-        $item->setName($post->getCollection()->getName());
-        $item->setUrl($this->router->generate('sonata_news_collection', ['collection' => $post->getCollection()->getSlug()]));
-        $item->setActive(false);
-        $breadcrumbs[] = $item;
+        if ($post->getCollection()) {
+            $item = new BreadcrumbItem();
+            $item->setName($post->getCollection()->getName());
+            $item->setUrl($this->router->generate('sonata_news_collection', ['collection' => $post->getCollection()->getSlug()]));
+            $item->setActive(false);
+            $breadcrumbs[] = $item;
+        }
 
         $item = new BreadcrumbItem();
         $item->setName($post->getTitle());
