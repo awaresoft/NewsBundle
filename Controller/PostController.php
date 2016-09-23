@@ -54,6 +54,9 @@ class PostController extends BasePostController
             $criteria['site'] = $site;
         }
 
+        $criteria['date']['query'] = 'p.publicationDateStart <= :now';
+        $criteria['date']['params'] = ['now' => new \DateTime()];
+
         $pager = $this->getPostManager()->getPager(
             $criteria,
             $request->get('page', 1),
@@ -102,12 +105,12 @@ class PostController extends BasePostController
         $translator = $this->get('translator');
         $post = $this->getPostManager()->findOneByPermalink($permalink, $this->container->get('sonata.news.blog'));
 
-        if ($site !== $post->getSite()) {
-            throw $this->createNotFoundException();
-        }
-
         if (!$post || (!$post->isPublic() && !$this->isGranted("ROLE_ADMIN"))) {
             throw $this->createNotFoundException($translator->trans('site_not_exists'));
+        }
+
+        if ($site !== $post->getSite()) {
+            throw $this->createNotFoundException();
         }
 
         if ($seoPage = $this->getSeoPage()) {

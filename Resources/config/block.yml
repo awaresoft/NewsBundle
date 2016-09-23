@@ -1,0 +1,10 @@
+services:
+    sonata.news.block.recent_posts:
+        class: Awaresoft\Sonata\NewsBundle\Block\RecentPostsBlock
+        tags:
+            - {name: sonata.block }
+        arguments:
+            - sonata.news.block.recent_posts
+            - @templating
+            - @sonata.news.manager.post
+            - @?sonata.admin.pool
