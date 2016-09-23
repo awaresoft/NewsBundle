@@ -245,14 +245,14 @@ class PostAdmin extends AwaresoftAbstractAdmin
             ->end();
 
         $formMapper
-            ->with($this->trans('admin.admin.form.group.classification'), array(
-                'class' => 'col-md-4'
-            ))
+            ->with($this->trans('admin.admin.form.group.classification'), [
+                'class' => 'col-md-4',
+            ])
 //            ->add('tags', 'sonata_type_model_autocomplete', array(
 //                'property' => 'name',
 //                'multiple' => 'true'
 //            ))
-            ->add('collection', 'sonata_type_model_list', array('required' => false))
+            ->add('collection', 'sonata_type_model_list', ['required' => true])
             ->end();
 
         $formMapper->setHelps([

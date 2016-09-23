@@ -80,9 +80,14 @@ class Post extends BasePost
     /**
      * @ORM\ManyToOne(targetEntity="Awaresoft\Sonata\PageBundle\Entity\Site")
      *
-     * @var Site
+     * @var SiteInterface
      */
     protected $site;
+
+    /**
+     * @Assert\NotBlank()
+     */
+    protected $collection;
 
     /**
      * Post constructor.
