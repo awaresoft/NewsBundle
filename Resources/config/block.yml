@@ -8,3 +8,5 @@ services:
             - @templating
             - @sonata.news.manager.post
             - @?sonata.admin.pool
+        calls:
+            - [setContainer, ["@service_container"]]
