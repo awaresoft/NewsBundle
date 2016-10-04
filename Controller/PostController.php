@@ -3,6 +3,7 @@
 namespace Awaresoft\Sonata\NewsBundle\Controller;
 
 use Sonata\NewsBundle\Entity\PostManager;
+use Sonata\NewsBundle\Model\PostInterface;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -128,6 +129,7 @@ class PostController extends BasePostController
         $nextPost = $postRepo->findNext($post, $site);
         $prevPost = $postRepo->findPrev($post, $site);
         $files = $post->getFilesEnabled();
+        $this->preparePostSeo($post);
 
         $response = $this->render('SonataNewsBundle:Post:view.html.twig', [
             'post' => $post,
@@ -163,6 +165,23 @@ class PostController extends BasePostController
     protected function getPostManager()
     {
         return $this->get('sonata.news.manager.post');
+    }
+
+    /**
+     * Add Post seo metatags
+     *
+     * @param PostInterface $post
+     */
+    protected function preparePostSeo(PostInterface $post)
+    {
+        $this->container->get('sonata.seo.page')
+            ->addMeta(
+                'property',
+                'og:image',
+                $this->getRequest()->getSchemeAndHttpHost() .
+                $this->getRequest()->getBaseUrl() .
+                $this->container->get('sonata.media.twig.extension')->path($post->getImage(), 'big')
+            );
     }
 
     /**
