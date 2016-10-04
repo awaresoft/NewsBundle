@@ -138,6 +138,7 @@ class PostController extends BasePostController
             'blog' => $this->get('sonata.news.blog'),
             'nextPost' => $nextPost,
             'prevPost' => $prevPost,
+            'permalink' => $permalink,
         ]);
 
         $statCookie = $this->getRequest()->cookies->get('stat');
