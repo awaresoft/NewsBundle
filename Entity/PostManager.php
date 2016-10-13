@@ -68,7 +68,7 @@ class PostManager extends BasePostManager
         }
 
         if (isset($criteria['collection']) && $criteria['collection'] instanceof CollectionInterface) {
-            $query->andWhere('p.collection = :collectionid');
+            $query->andWhere(':collectionid MEMBER OF p.collections');
             $parameters['collectionid'] = $criteria['collection']->getId();
         }
 

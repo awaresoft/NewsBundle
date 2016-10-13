@@ -5,6 +5,7 @@ namespace Awaresoft\Sonata\NewsBundle\Entity;
 use Awaresoft\Sonata\MediaBundle\Entity\Gallery;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
+use Sonata\ClassificationBundle\Model\CollectionInterface;
 use Sonata\NewsBundle\Entity\BasePost as BasePost;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -85,9 +86,19 @@ class Post extends BasePost
     protected $site;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Awaresoft\Sonata\ClassificationBundle\Entity\Collection", cascade={"persist"})
+     * @ORM\JoinTable(name="news__post_collections",
+     *      joinColumns={@ORM\JoinColumn(name="post_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="collection_id", referencedColumnName="id")}
+     * )
+     *
+     * @Assert\NotNull()
      * @Assert\NotBlank()
+     * @Assert\Count(max="10")
+     *
+     * @var \Doctrine\Common\Collections\ArrayCollection
      */
-    protected $collection;
+    protected $collections;
 
     /**
      * Post constructor.
@@ -98,6 +109,7 @@ class Post extends BasePost
 
         $this->commentsDefaultStatus = 0;
         $this->files = new ArrayCollection();
+        $this->collections = new ArrayCollection();
         $this->visits = 0;
     }
 
@@ -278,5 +290,41 @@ class Post extends BasePost
         $this->site = $site;
 
         return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCollections()
+    {
+        return $this->collections;
+    }
+
+    /**
+     * @param ArrayCollection $collections
+     *
+     * @return Post
+     */
+    public function setCollections(ArrayCollection $collections)
+    {
+        $this->collections = $collections;
+
+        return $this;
+    }
+
+    /**
+     * @param CollectionInterface $collection
+     */
+    public function addCollection(CollectionInterface $collection)
+    {
+        $this->collections[] = $collection;
+    }
+
+    /**
+     * @param CollectionInterface $collection
+     */
+    public function removeCollection(CollectionInterface $collection)
+    {
+        $this->collections->removeElement($collection);
     }
 }

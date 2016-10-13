@@ -114,3 +114,4 @@ group_comment: Comment
 news: News
 form.label_meta_title: Title
 form.label_meta_description: Description
+form.label_collections: Collections

@@ -152,7 +152,7 @@ class PostAdmin extends AwaresoftAbstractAdmin
     {
         $datagridMapper
             ->add('site')
-            ->add('collection')
+            ->add('collections')
             ->add('title')
             ->add('content')
             ->add('enabled');
@@ -252,7 +252,9 @@ class PostAdmin extends AwaresoftAbstractAdmin
 //                'property' => 'name',
 //                'multiple' => 'true'
 //            ))
-            ->add('collection', 'sonata_type_model_list', ['required' => true])
+            ->add('collections', null, [
+                'required' => true,
+            ])
             ->end();
 
         $formMapper->setHelps([
